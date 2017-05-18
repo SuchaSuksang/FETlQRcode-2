@@ -1,8 +1,11 @@
 package appewtc.masterung.fetlqrcode;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -53,9 +56,9 @@ public class ServiceActivity extends AppCompatActivity {
 
             JSONArray jsonArray = new JSONArray(strJSON);
             int i = jsonArray.length();
-            String[] iconStrings = new String[i];
-            String[] titleStrings = new String[i];
-            String[] deatailStrings = new String[i];
+            final String[] iconStrings = new String[i];
+            final String[] titleStrings = new String[i];
+            final String[] deatailStrings = new String[i];
 
             for (int i1=0;i1<i;i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i1);
@@ -67,6 +70,19 @@ public class ServiceActivity extends AppCompatActivity {
 
             MyAdapter myAdapter = new MyAdapter(this, iconStrings, titleStrings, deatailStrings);
             listView.setAdapter(myAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Intent intent = new Intent(ServiceActivity.this, DetailActivity.class);
+                    intent.putExtra("Name", titleStrings[position]);
+                    intent.putExtra("Detail",deatailStrings[position]);
+                    intent.putExtra("Produce",iconStrings[position]);
+                    startActivity(intent);
+
+                }
+            });
 
 
         } catch (Exception e) {
