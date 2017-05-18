@@ -3,4 +3,7 @@
     <dimen name="margin">50dp</dimen>
     <dimen name="padding">20dp</dimen>
     <dimen name="h1">30sp</dimen>
+    <dimen name="h2">20sp</dimen>
+    <dimen name="icon">120dp</dimen>
+    <dimen name="margin1">15dp</dimen>
 </resources>
