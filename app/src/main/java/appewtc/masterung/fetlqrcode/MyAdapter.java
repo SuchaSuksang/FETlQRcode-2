@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by THQN150303 on 18/05/2017.
  */
@@ -19,6 +21,7 @@ public class MyAdapter extends BaseAdapter {
     private String[] iconStrings, titleStrings, detailStrings;
     private ImageView imageView;
     private TextView titleTextView,detailTextView;
+    private String detailShort;
 
     public MyAdapter(Context context, String[] iconStrings, String[] titleStrings, String[] detailStrings) {
         this.context = context;
@@ -53,6 +56,20 @@ public class MyAdapter extends BaseAdapter {
         imageView = (ImageView) view.findViewById(R.id.imageView);
         titleTextView = (TextView) view.findViewById(R.id.txtTitle);
         detailTextView = (TextView) view.findViewById(R.id.txtDetail);
+
+        //Show Text
+        titleTextView.setText(titleStrings[position]);
+
+        if (detailStrings[position].length() > 30) {
+
+            detailShort = detailStrings[position].substring(0, 30) + "...";
+        } else {
+            detailShort = detailStrings[position];
+        }
+
+        detailTextView.setText(detailShort);
+        Picasso.with(context).load(iconStrings[position]).into(imageView);
+
 
         return view;
     }

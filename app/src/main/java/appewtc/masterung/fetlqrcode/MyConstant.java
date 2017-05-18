@@ -11,6 +11,10 @@ public class MyConstant {
     private String urlGetUser = "http://androidthai.in.th/fetl/get_user_sucha.php";
     private String urlGetProduct = "http://androidthai.in.th/fetl/getProduct.php";
 
+    public String getUrlGetProduct() {
+        return urlGetProduct;
+    }
+
     public String getUrlGetUser() {
         return urlGetUser;
     }
