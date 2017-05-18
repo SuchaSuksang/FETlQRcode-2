@@ -9,6 +9,7 @@ public class MyConstant {
     //Explicit
     private String urlPostUser = "http://androidthai.in.th/fetl/add_user_sucha.php";
     private String urlGetUser = "http://androidthai.in.th/fetl/get_user_sucha.php";
+    private String urlGetProduct = "http://androidthai.in.th/fetl/getProduct.php";
 
     public String getUrlGetUser() {
         return urlGetUser;
